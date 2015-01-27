@@ -1,0 +1,16 @@
+{
+    "name": "Ultra",
+    "description": "An advanced library for working with Wordpress; the core of the Ultrapress framework",
+    "authors": [
+        {
+            "name": "Jake Cleary",
+            "email": "shout@jakecleary.net",
+            "homepage": "http://jakecleary.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Ultra\\": "src/"
+        }
+    }
+}
