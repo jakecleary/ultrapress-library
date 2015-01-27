@@ -1,6 +1,8 @@
 {
-    "name": "Ultra",
+    "name": "jakecleary/ultrapress-library",
     "description": "An advanced library for working with Wordpress; the core of the Ultrapress framework",
+    "license": "MIT",
+    "keywords": ["framework", "wordpress", "ultrapress"],
     "authors": [
         {
             "name": "Jake Cleary",
