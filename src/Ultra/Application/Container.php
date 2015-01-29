@@ -1,14 +1,12 @@
 <?php
 
-namespace Ultra\Container;
-
-use Ultra\ContainerInterface;
+namespace Ultra\Application;
 
 /**
  * Allows you to bind an instance to a key so that you can
  * retrieve the instance in a global/static scope.
  */
-class Container implements ContainerInterface
+class Container
 {
     /**
      * An array of all the application bindings.

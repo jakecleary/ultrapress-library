@@ -2,13 +2,11 @@
 
 namespace Ultra\Config;
 
-use Ultra\Config\ConfigInterface;
-
 /**
  * Class for reading app configuration data stored inside the /config
  * folder. Files it reads must return arrays.
  */
-class Config implements ConfigInterface
+class Config
 {
     /**
      * A history of the data we have previously read.
