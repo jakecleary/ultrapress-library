@@ -1,8 +1,6 @@
 <?php
 
-namespace Ultra\Route;
-
-use Ultra\Route\routeInterface;
+namespace Ultra\Router;
 
 /**
  * Class for routing requests to different parts of the app. Essentailly a
@@ -11,7 +9,7 @@ use Ultra\Route\routeInterface;
  * the user to specific controller methods. Allows us to
  * avoid the Wordpress templating system/hierarchy.
  */
-class Route implements RouteInterface
+class Route
 {
     /**
      * Respond to a GET request.

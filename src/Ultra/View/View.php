@@ -2,14 +2,12 @@
 
 namespace Ultra\View;
 
-use Ultra\View\ViewInterface;
-
 /**
  * Class for loading template files from within the /views directory. Allows you
  * to specifiy views using dot notation e.g 'pages.home' for cleaner code
  * syntax. You can pass data theough using a simple array syntax too.
  */
-class View implements ViewInterface
+class View
 {
     /**
      * Grab a file, while specifying an optional subdirectory of views.
