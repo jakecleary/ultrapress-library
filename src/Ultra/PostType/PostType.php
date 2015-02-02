@@ -12,7 +12,7 @@ class PostType extends AbstractPostType
      *
      * @var string
      */
-    public $postType = '';
+    public $slug = '';
 
     /**
      * Capitalized name.
