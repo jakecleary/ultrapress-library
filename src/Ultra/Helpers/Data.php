@@ -16,7 +16,7 @@ class Data
     {
         if(is_array($array))
         {
-            return (object) array_map(self::'arrayToObject', $array);
+            return (object) array_map([__class__, __function__], $array);
         }
         else
         {
