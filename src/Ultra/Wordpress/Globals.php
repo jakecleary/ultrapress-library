@@ -1,11 +1,11 @@
 <?php
 
-namespace Ultra\Global;
+namespace Ultra\Wordpress;
 
 /**
  * Wrapper class for interacting with Worpress' shitty global system.
  */
-class Global
+class Globals
 {
     /**
      * Get the WP_Post object from the global instance.
