@@ -2,7 +2,7 @@
 
 namespace Ultra\Rewrite;
 
-class Rewrite
+interface Rewrite
 {
     /**
      * Generate some new rewrite rules for a post type.
@@ -18,7 +18,7 @@ class Rewrite
      * @param array $rules Rules passed to instance
      * @return array $rulesets Split rules
      */
-    private function getRules($rules);
+    public function getRules($rules);
 
     /**
      * Generate a rule for an array that Wordpress can understand.
@@ -26,10 +26,10 @@ class Rewrite
      * @param array $ruleset The chunks for the rule
      * @return array regex => query rule pair for Wordpress
      */
-    private function generateRule($ruleset);
+    public function generateRule($ruleset);
 
     /**
      * Register the rules with Wordpress.
      */
-    private function addRules();
+    public function addRules();
 }

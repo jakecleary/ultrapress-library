@@ -1,8 +1,8 @@
 <?php
 
-namespace Ultra\Muatator;
+namespace Ultra\Mutator;
 
-class MutatorInterface
+interface MutatorInterface
 {
     /**
      * Pass some WP_Post objects and trim them down.
@@ -39,10 +39,10 @@ class MutatorInterface
     /**
      * Get the contents of an ACF field.
      */
-    private function field($name);
+    public function field($name);
 
     /**
      * Strip out a namespace from a data set.
      */
-    private function removeNamespace($set, $namespace);
+    public function removeNamespace($set, $namespace);
 }

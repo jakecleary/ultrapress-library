@@ -2,7 +2,7 @@
 
 namespace Ultra\Controller;
 
-class ControllerInterface
+interface ControllerInterface
 {
     //
 }

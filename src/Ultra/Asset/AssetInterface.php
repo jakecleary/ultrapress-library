@@ -2,7 +2,7 @@
 
 namespace Ultra\Asset;
 
-class AssetInterface
+iterface AssetInterface
 {
     /**
      * Get a stylesheet.

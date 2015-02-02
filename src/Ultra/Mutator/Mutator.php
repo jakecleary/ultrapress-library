@@ -1,6 +1,6 @@
 <?php
 
-namespace Ultra\Muatator;
+namespace Ultra\Mutator;
 
 use Ultra\Mutator\MutatorInterface;
 use Ultra\Data;
@@ -151,7 +151,7 @@ class Mutator implements MutatorInterface
      * @param string $name The field name
      * @return mixed The field's data
      */
-    private function field($name)
+    public function field($name)
     {
         foreach($this->data as $post)
         {
@@ -177,7 +177,7 @@ class Mutator implements MutatorInterface
      * @param string $namespace The namespace to remove
      * @return TannWestlake\Mutator The mutated data object
      */
-    private function removeNamespace($set, $namespace)
+    public function removeNamespace($set, $namespace)
     {
         foreach($set as $key => $value)
         {
