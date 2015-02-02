@@ -14,9 +14,9 @@ class Data
      */
     public static function arrayToObject($array)
     {
-        if (is_array($array))
+        if(is_array($array))
         {
-            return (object) array_map(__FUNCTION__, $array);
+            return (object) array_map(self::'arrayToObject', $array);
         }
         else
         {

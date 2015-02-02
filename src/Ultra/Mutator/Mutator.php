@@ -2,6 +2,7 @@
 
 namespace Ultra\Mutator;
 
+use Ultra\Helpers\PostObject as Post;
 use Ultra\Mutator\MutatorInterface;
 use Ultra\Helpers\Data;
 use WP_Query;
@@ -78,8 +79,8 @@ class Mutator implements MutatorInterface
                 'name' => $author->display_name,
                 'permalink' => get_author_posts_url($id),
                 'images' => (object) [
-                    'avatar' => $avatar['url'],
-                    'banner' => $banner['url']
+                    'avatar' => $avatar ? $avatar['url'] : false,
+                    'banner' => $banner ? $banner['url'] : false
                 ]
             ];
 
@@ -124,7 +125,7 @@ class Mutator implements MutatorInterface
     {
         foreach($this->data as $post)
         {
-            $post->images = Data::buildImagesArray($post->ID);
+            $post->images = Post::images($post->ID);
         }
 
         return $this;
