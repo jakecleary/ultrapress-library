@@ -3,7 +3,7 @@
 namespace Ultra\Mutator;
 
 use Ultra\Mutator\MutatorInterface;
-use Ultra\Data;
+use Ultra\Helpers\Data;
 use WP_Query;
 
 class Mutator implements MutatorInterface
@@ -163,7 +163,7 @@ class Mutator implements MutatorInterface
             }
             elseif(in_array($fieldType, ['image']))
             {
-                $post->$name = arrayToObject(get_field($name, $post->ID));
+                $post->$name = Data::arrayToObject(get_field($name, $post->ID));
             }
         }
 
