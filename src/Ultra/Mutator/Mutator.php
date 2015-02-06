@@ -6,6 +6,7 @@ use Ultra\Helpers\PostObject as Post;
 use Ultra\Mutator\MutatorInterface;
 use Ultra\Helpers\Data;
 use WP_Query;
+use WP_Post;
 
 class Mutator implements MutatorInterface
 {
@@ -24,11 +25,6 @@ class Mutator implements MutatorInterface
     public function __construct(array $items)
     {
         $this->data = $items;
-
-        foreach($this->data as $post)
-        {
-            $this->removeNamespace($post, 'post');
-        }
     }
 
     /**
@@ -37,7 +33,7 @@ class Mutator implements MutatorInterface
      * found directly.
      *
      * @param array $data An array of meta-data slugs
-     * @return TannWestlake\Mutator The mutated data object
+     * @return Ultra\Mutator\Mutator The mutated data object
      */
     public function with(array $data)
     {
@@ -57,13 +53,29 @@ class Mutator implements MutatorInterface
             }
         }
 
-        return $this->data;
+        return $this;
+    }
+
+    /**
+     * Trim surplus namespaces from array keys.
+     *
+     * @param array $namespaces The namespaces to remove
+     * @return Ultra\Mutator\Mutator
+     */
+    public function trim(array $namespaces)
+    {
+        foreach($this->data as $post)
+        {
+            $this->removeNamespace($post, $namespaces);
+        }
+
+        return $this;
     }
 
     /**
      * Include the author display name in the post object.
      *
-     * @return TannWestlake\Mutator The mutated data object
+     * @return Ultra\Mutator\Mutator The mutated data object
      */
     public function author()
     {
@@ -94,7 +106,7 @@ class Mutator implements MutatorInterface
      * Include the first taxonomy term name in the post object.
      *
      * @param string $name The taxonomy name
-     * @return TannWestlake\Mutator The mutated data object
+     * @return Ultra\Mutator\Mutator The mutated data object
      */
     public function taxonomy($name)
     {
@@ -119,7 +131,7 @@ class Mutator implements MutatorInterface
     /**
      * Include the featured image URLs in the post object.
      *
-     * @return TannWestlake\Mutator The mutated data object
+     * @return Ultra\Mutator\Mutator The mutated data object
      */
     public function images()
     {
@@ -134,7 +146,7 @@ class Mutator implements MutatorInterface
     /**
      * Include the permalink in the post object.
      *
-     * @return TannWestlake\Mutator The mutated data object
+     * @return Ultra\Mutator\Mutator The mutated data object
      */
     public function permalink()
     {
@@ -174,26 +186,36 @@ class Mutator implements MutatorInterface
     /**
      * Strip out a namespace from a data set.
      *
-     * @param array $data The data set to modify
+     * @param array $key The WP_Post object to modify
      * @param string $namespace The namespace to remove
-     * @return TannWestlake\Mutator The mutated data object
+     * @return Ultra\Mutator\Mutator The mutated data object
      */
-    public function removeNamespace($set, $namespace)
+    public function removeNamespace(WP_Post $post, $namespaces)
     {
-        foreach($set as $key => $value)
+        foreach($post as $key => $value)
         {
             $splitKey = explode('_', $key);
 
-            if($splitKey[0] == $namespace)
+            if(in_array($splitKey[0], $namespaces))
             {
-                unset($set->$key);
+                unset($post->$key);
 
                 $newKey = implode(array_slice($splitKey, 1), '_');
 
-                $set->$newKey = $value;
+                $post->$newKey = $value;
             }
         }
 
         return $this;
+    }
+
+    /**
+     * Return the set of posts.
+     *
+     * @return array WP_Post objects
+     */
+    public function get()
+    {
+        return $this->data;
     }
 }

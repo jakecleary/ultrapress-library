@@ -2,6 +2,8 @@
 
 namespace Ultra\Mutator;
 
+use WP_Post;
+
 interface MutatorInterface
 {
     /**
@@ -44,5 +46,10 @@ interface MutatorInterface
     /**
      * Strip out a namespace from a data set.
      */
-    public function removeNamespace($set, $namespace);
+    public function removeNamespace($post, $namespaces);
+
+    /**
+     * Return the set of post objects.
+     */
+    public function get();
 }
