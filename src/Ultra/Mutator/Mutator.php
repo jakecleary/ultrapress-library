@@ -186,11 +186,11 @@ class Mutator implements MutatorInterface
     /**
      * Strip out a namespace from a data set.
      *
-     * @param array $key The WP_Post object to modify
+     * @param object $post WP_Post object to modify
      * @param string $namespace The namespace to remove
      * @return Ultra\Mutator\Mutator The mutated data object
      */
-    public function removeNamespace(WP_Post $post, $namespaces)
+    public function removeNamespace($post, $namespaces)
     {
         foreach($post as $key => $value)
         {
